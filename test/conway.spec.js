@@ -18,16 +18,30 @@ describe('Test Conway Game of Life', () => {
         });
     });
 
-    it('should next state be correct given the grid with one cell has two alive neighbours', () => {
+    it('should next state be correct given the grid with one alive or dead cell has two alive neighbours', () => {
         let current = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
         let expectNext = [[0, 0, 0], [0, 1, 0], [0, 0, 0]];
 
         assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
 
-    it('should next state be correct given the grid with one cell has three alive neighbours', () => {
+    it('should next state be correct given the grid with one alive or dead cell has three alive neighbours', () => {
         let current = [[0, 1, 0], [0, 1, 1], [0, 1, 0]];
         let expectNext = [[0, 1, 1], [1, 1, 1], [0, 1, 1]];
+
+        assertNextGeneration(gotoNextGeneration(current), expectNext);
+    });
+
+    it('should next state be correct given the grid with one alive cell has more than three alive neighbours', () => {
+        let current = [[0, 1, 0], [1, 1, 1], [0, 1, 0]];
+        let expectNext = [[1, 1, 1], [1, 0, 1], [1, 1, 1]];
+
+        assertNextGeneration(gotoNextGeneration(current), expectNext);
+    });
+
+    it('should next state be correct given the grid with one dead cell has more than three alive neighbours', () => {
+        let current = [[0, 1, 0], [1, 0, 1], [0, 1, 0]];
+        let expectNext = [[0, 1, 0], [1, 0, 1], [0, 1, 0]];
 
         assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
