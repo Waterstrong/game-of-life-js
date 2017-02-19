@@ -2,7 +2,7 @@ const gotoNextGeneration = (grid) => {
     return grid.map((row, rowIndex) => {
         return row.map((cell, colIndex) => {
             let aliveNeighborNumber = calculateAliveNeighborNumber(rowIndex, colIndex, grid);
-            if(aliveNeighborNumber < 2) {
+            if (aliveNeighborNumber < 2) {
                 return 0;
             }
             return cell;
@@ -10,24 +10,19 @@ const gotoNextGeneration = (grid) => {
     });
 };
 
-const calculateAliveNeighborNumber = (rowIndex, colIndex, grid) => {
-    let aliveNeighborNumber = 0;
-    for (let i = -1; i < 2; ++i) {
-        for (let j = -1; j < 2; ++j) {
-            if (i !== 0 && j !== 0) {
-                let newRowIndex = rowIndex + i;
-                let newColIndex = colIndex + j;
-                if (newRowIndex >= 0 && newRowIndex < grid.length
-                    && newColIndex >= 0 && newColIndex < grid[newRowIndex].length) {
-                    if (grid[newRowIndex][newColIndex] === 1) {
-                        ++aliveNeighborNumber;
-                    }
-                }
+const NEIGHBOR_INDEX = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
-            }
-        }
-    }
-    return aliveNeighborNumber;
+const withinIndex = (rowIndex, colIndex, grid) => {
+    return rowIndex >= 0 && rowIndex < grid.length
+        && colIndex >= 0 && colIndex < grid[rowIndex].length;
+};
+
+const calculateAliveNeighborNumber = (rowIndex, colIndex, grid) => {
+    return NEIGHBOR_INDEX.reduce((acc, val) => {
+        let newRowIndex = rowIndex + val[0];
+        let newColIndex = colIndex + val[1];
+        return withinIndex(newRowIndex, newColIndex, grid) ? acc + grid[newRowIndex][newColIndex] : acc;
+    }, 0);
 };
 
 module.exports = {
