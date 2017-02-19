@@ -12,29 +12,23 @@ describe('Test Conway Game of Life', () => {
         assertNextGeneration(gotoNextGeneration(current), current);
     });
 
-    it('should next state be the all dead given the grid with less than two alive cells', () => {
-        let current1 = [
-            [0, 0, 0],
-            [0, 1, 0],
-            [0, 0, 0]
-        ];
-        let current2 = [
-            [0, 1, 0],
-            [0, 1, 0],
-            [0, 0, 0]
-        ];
-        let expectNext = [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]
+    it('should next state be all dead given the grid with one cell has less than two alive neighbours', () => {
+        let current = [
+            [1, 0, 0, 0],
+            [1, 0, 0, 0],
+            [0, 0, 0, 1]
         ];
 
-        [current1, current2].forEach((current) => {
-            assertNextGeneration(gotoNextGeneration(current), expectNext);
-        });
+        let expectNext = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ];
+
+        assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
 
-    it('should next state be correct given the grid with one alive or dead cell has two alive neighbours', () => {
+    it('should next state remain given the grid with one alive or dead cell has two alive neighbours', () => {
         let current = [
             [1, 0, 0],
             [0, 1, 0],
@@ -49,7 +43,7 @@ describe('Test Conway Game of Life', () => {
         assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
 
-    it('should next state be correct given the grid with one alive or dead cell has three alive neighbours', () => {
+    it('should next state be alive given the grid with one alive or dead cell has three alive neighbours', () => {
         let current = [
             [0, 1, 0],
             [0, 1, 1],
@@ -64,7 +58,7 @@ describe('Test Conway Game of Life', () => {
         assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
 
-    it('should next state be correct given the grid with one alive cell has more than three alive neighbours', () => {
+    it('should next state be dead given the grid with one alive cell has more than three alive neighbours', () => {
         let current = [
             [0, 1, 0],
             [1, 1, 1],
@@ -79,7 +73,7 @@ describe('Test Conway Game of Life', () => {
         assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
 
-    it('should next state be correct given the grid with one dead cell has more than three alive neighbours', () => {
+    it('should next state be dead given the grid with one dead cell has more than three alive neighbours', () => {
         let current = [
             [0, 1, 0],
             [1, 0, 1],
@@ -89,6 +83,22 @@ describe('Test Conway Game of Life', () => {
             [0, 1, 0],
             [1, 0, 1],
             [0, 1, 0]
+        ];
+
+        assertNextGeneration(gotoNextGeneration(current), expectNext);
+    });
+
+    it('should next state be correct given the nonstandard grid on both row and column', () => {
+        let current = [
+            [1, 0, 0, 1],
+            [1, 0, 0],
+            [0, 1]
+        ];
+
+        let expectNext = [
+            [0, 0, 0, 0],
+            [1, 1, 0],
+            [0, 0]
         ];
 
         assertNextGeneration(gotoNextGeneration(current), expectNext);
