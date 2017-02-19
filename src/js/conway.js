@@ -2,7 +2,7 @@ const gotoNextGeneration = (grid) => {
     return grid.map((row, rowIndex) => {
         return row.map((cell, colIndex) => {
             let aliveNeighborNumber = calculateAliveNeighborNumber(rowIndex, colIndex, grid);
-            if (aliveNeighborNumber < 2) {
+            if (aliveNeighborNumber < 2 ) {
                 return 0;
             }
             return cell;
