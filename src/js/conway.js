@@ -5,6 +5,9 @@ const gotoNextGeneration = (grid) => {
             if (aliveNeighborNumber < 2 ) {
                 return 0;
             }
+            if(aliveNeighborNumber === 3) {
+                return 1;
+            }
             return cell;
         });
     });

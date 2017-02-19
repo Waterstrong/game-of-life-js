@@ -25,6 +25,13 @@ describe('Test Conway Game of Life', () => {
         assertNextGeneration(gotoNextGeneration(current), expectNext);
     });
 
+    it('should next state be correct given the grid with one cell has three alive neighbours', () => {
+        let current = [[0, 1, 0], [0, 1, 1], [0, 1, 0]];
+        let expectNext = [[0, 1, 1], [1, 1, 1], [0, 1, 1]];
+
+        assertNextGeneration(gotoNextGeneration(current), expectNext);
+    });
+
     const assertNextGeneration = (next, expectNext) => {
         expect(next).be.instanceof(Array);
         expect(next.toString()).to.equal(expectNext.toString());
