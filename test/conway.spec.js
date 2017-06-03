@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import gotoNextGeneration from '../src/js/conway.js';
+import nextGeneration from '../src/js/conway.js';
 
 describe('Test Conway Game of Life', () => {
     it('should next state be all dead given the grid with zero alive cell', () => {
@@ -9,7 +9,7 @@ describe('Test Conway Game of Life', () => {
             [0, 0, 0]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), current);
+        assertNextGeneration(nextGeneration(current), current);
     });
 
     it('should next state be all dead given the grid with one cell has less than two alive neighbours', () => {
@@ -25,7 +25,7 @@ describe('Test Conway Game of Life', () => {
             [0, 0, 0, 0]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), expectNext);
+        assertNextGeneration(nextGeneration(current), expectNext);
     });
 
     it('should next state remain given the grid with one alive or dead cell has two alive neighbours', () => {
@@ -40,7 +40,7 @@ describe('Test Conway Game of Life', () => {
             [0, 0, 0]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), expectNext);
+        assertNextGeneration(nextGeneration(current), expectNext);
     });
 
     it('should next state be alive given the grid with one alive or dead cell has three alive neighbours', () => {
@@ -55,7 +55,7 @@ describe('Test Conway Game of Life', () => {
             [0, 1, 1]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), expectNext);
+        assertNextGeneration(nextGeneration(current), expectNext);
     });
 
     it('should next state be dead given the grid with one alive cell has more than three alive neighbours', () => {
@@ -70,7 +70,7 @@ describe('Test Conway Game of Life', () => {
             [1, 1, 1]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), expectNext);
+        assertNextGeneration(nextGeneration(current), expectNext);
     });
 
     it('should next state be dead given the grid with one dead cell has more than three alive neighbours', () => {
@@ -85,7 +85,7 @@ describe('Test Conway Game of Life', () => {
             [0, 1, 0]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), expectNext);
+        assertNextGeneration(nextGeneration(current), expectNext);
     });
 
     it('should next state be correct given the nonstandard grid on both row and column', () => {
@@ -101,7 +101,7 @@ describe('Test Conway Game of Life', () => {
             [0, 0]
         ];
 
-        assertNextGeneration(gotoNextGeneration(current), expectNext);
+        assertNextGeneration(nextGeneration(current), expectNext);
     });
 
     const assertNextGeneration = (next, expectNext) => {
