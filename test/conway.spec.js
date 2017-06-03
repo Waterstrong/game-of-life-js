@@ -1,8 +1,8 @@
 import {expect} from 'chai';
-import {gotoNextGeneration} from '../src/js/conway.js';
+import gotoNextGeneration from '../src/js/conway.js';
 
 describe('Test Conway Game of Life', () => {
-    it('should next state be the same given the grid with zero alive cell', () => {
+    it('should next state be all dead given the grid with zero alive cell', () => {
         let current = [
             [0, 0, 0],
             [0, 0, 0],
