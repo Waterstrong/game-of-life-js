@@ -1,4 +1,4 @@
-const NEIGHBOR_INDEX = [
+const NEIGHBOR_OFFSET = [
     [-1, -1],
     [-1, 0],
     [-1, 1],
@@ -11,27 +11,25 @@ const NEIGHBOR_INDEX = [
 
 const gotoNextGeneration = (grid) =>
     grid.map((row, rowIndex) =>
-        row.map((cell, colIndex) => {
-            const aliveNeighborNumber = calculateAliveNeighborNumber(rowIndex, colIndex, grid);
-            return getNextState(grid[rowIndex][colIndex], aliveNeighborNumber);
-        }));
+        row.map((cell, colIndex) =>
+            getNextState(grid[rowIndex][colIndex], calculateAliveNeighborNumber([rowIndex, colIndex], grid))));
 
 const getNextState = (currentState, aliveNeighborNumber) =>
     [0, 0, currentState, 1, 0, 0, 0, 0][aliveNeighborNumber];
 
-const calculateAliveNeighborNumber = (rowIndex, colIndex, grid) =>
-    NEIGHBOR_INDEX
-        .map(position => transformIndexToState(position, rowIndex, colIndex, grid))
+const calculateAliveNeighborNumber = (position, grid) =>
+    NEIGHBOR_OFFSET
+        .map(offset => transformOffsetToState(offset, position, grid))
         .reduce((result, state) => result + state, 0);
 
-const transformIndexToState = (position, rowIndex, colIndex, grid) => {
-    const newRowIndex = rowIndex + position[0];
-    const newColIndex = colIndex + position[1];
-    return withinIndex(newRowIndex, newColIndex, grid) ? grid[newRowIndex][newColIndex] : 0;
+const transformOffsetToState = (offset, position, grid) => {
+    const newRow = position[0] + offset[0];
+    const newColumn = position[1] + offset[1];
+    return withinIndex(newRow, newColumn, grid) ? grid[newRow][newColumn] : 0;
 };
 
 
-const withinIndex = (rowIndex, colIndex, grid) =>
-rowIndex >= 0 && rowIndex < grid.length && colIndex >= 0 && colIndex < grid[rowIndex].length;
+const withinIndex = (row, column, grid) =>
+    row >= 0 && row < grid.length && column >= 0 && column < grid[row].length;
 
 export default gotoNextGeneration;
