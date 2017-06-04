@@ -127,6 +127,68 @@ describe('Test Conway Game of Life for cell with more than three alive neighbour
 
         assertNextGeneration(nextGeneration(current), expectNext);
     });
+
+    it('should next state be dead given the grid with one alive cell has five alive neighbours', () => {
+        let current = [
+            [1, 1, 0],
+            [1, 1, 1],
+            [0, 1, 0]
+        ];
+        let expectNext = [
+            [1, 0, 1],
+            [0, 0, 1],
+            [1, 1, 1]
+        ];
+
+        assertNextGeneration(nextGeneration(current), expectNext);
+    });
+
+    it('should next state be dead given the grid with one dead cell has five alive neighbours', () => {
+        let current = [
+            [1, 1, 0],
+            [1, 0, 1],
+            [0, 1, 0]
+        ];
+        let expectNext = [
+            [1, 1, 0],
+            [1, 0, 1],
+            [0, 1, 0]
+        ];
+
+        assertNextGeneration(nextGeneration(current), expectNext);
+    });
+
+    it('should next state be correct given the grid with one alive cell has six alive neighbours surround', () => {
+        const current = [
+            [1, 1, 0],
+            [1, 0, 0],
+            [1, 1, 1]
+        ];
+
+        const expectNext = [
+            [1, 1, 0],
+            [0, 0, 1],
+            [1, 1, 0]
+        ];
+
+        assertNextGeneration(nextGeneration(current), expectNext);
+    });
+
+    it('should next state be correct given the grid with one dead cell has six alive neighbours surround', () => {
+        const current = [
+            [1, 1, 0],
+            [1, 0, 0],
+            [1, 1, 1]
+        ];
+
+        const expectNext = [
+            [1, 1, 0],
+            [0, 0, 1],
+            [1, 1, 0]
+        ];
+
+        assertNextGeneration(nextGeneration(current), expectNext);
+    });
 });
 
 describe('Test Conway Game of Life for grid is a non-standard rectangle grid', () => {
@@ -146,7 +208,6 @@ describe('Test Conway Game of Life for grid is a non-standard rectangle grid', (
         assertNextGeneration(nextGeneration(current), expectNext);
     });
 });
-
 
 const assertNextGeneration = (next, expectNext) => {
     expect(next).to.be.an('array');
