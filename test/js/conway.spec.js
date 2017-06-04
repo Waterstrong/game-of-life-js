@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import nextGeneration from '../src/js/conway.js';
+import nextGeneration from '../../src/js/conway.js';
 
 describe('Test Conway Game of Life', () => {
     it('should next state be all dead given the grid with zero alive cell', () => {
@@ -105,7 +105,7 @@ describe('Test Conway Game of Life', () => {
     });
 
     const assertNextGeneration = (next, expectNext) => {
-        expect(next).be.instanceof(Array);
-        expect(next.toString()).to.equal(expectNext.toString());
+        expect(next).to.be.an('array');
+        expect(next).to.deep.equal(expectNext);
     };
 });

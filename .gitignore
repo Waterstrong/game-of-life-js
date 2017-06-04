@@ -4,3 +4,4 @@ node_modules/
 *.log
 dist/
 mochawesome-reports/
+mochawesome-report/
