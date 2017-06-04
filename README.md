@@ -1,4 +1,4 @@
-## Get Started
+## Get Started - Conway's Game of Life [![Build Status](https://travis-ci.org/Waterstrong/game-of-life-js.svg?branch=master)](https://travis-ci.org/Waterstrong/game-of-life-js)
 
 Just practice TDD, Refactor, Shortcut and ES6-FP. Please refer to the each baby step if you are interested.
 
