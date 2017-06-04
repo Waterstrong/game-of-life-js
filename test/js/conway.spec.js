@@ -189,6 +189,39 @@ describe('Test Conway Game of Life for cell with more than three alive neighbour
 
         assertNextGeneration(nextGeneration(current), expectNext);
     });
+
+    it('should next state be correct given the grid with one alive cell has seven alive neighbours surround', () => {
+        const current = [
+            [1, 1, 1],
+            [1, 0, 0],
+            [1, 1, 1]
+        ];
+
+        const expectNext = [
+            [1, 1, 0],
+            [0, 0, 0],
+            [1, 1, 0]
+        ];
+
+        assertNextGeneration(nextGeneration(current), expectNext);
+    });
+
+    it('should next state be correct given the grid with one dead cell has seven alive neighbours surround', () => {
+        const current = [
+            [1, 1, 1],
+            [1, 0, 0],
+            [1, 1, 1]
+        ];
+
+        const expectNext = [
+            [1, 1, 0],
+            [0, 0, 0],
+            [1, 1, 0]
+        ];
+
+        assertNextGeneration(nextGeneration(current), expectNext);
+    });
+
 });
 
 describe('Test Conway Game of Life for grid is a non-standard rectangle grid', () => {
