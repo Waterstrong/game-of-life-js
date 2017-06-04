@@ -2,13 +2,22 @@
 
 Just practice TDD, Refactor, Shortcut and ES6-FP. Please refer to the each baby step if you are interested.
 
-```
-npm install  # install dependencies
+Also introduce the `React` and `yarn` by [Kai Hu](https://github.com/WrongKey).
 
-npm test  # run the tests and generate the report
+```
+yarn install  # install dependencies, requires node ^5.0
+
+yarn test  # run the tests and generate the report
+
+yarn start  # Start the Game of Life
 ```
 
 To checkout the test report: open `mochawesome-report/mochawesome.html`
 
 ![](img/test_result.png)
+
+The UI part is provided by [Kai Hu](https://github.com/WrongKey).
+
+![](img/screenshot-square.png)
+![](img/screenshot-circle.png)
 
