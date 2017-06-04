@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import nextGeneration from '../../src/js/conway.js';
+import nextGeneration from '../../src/core/conway.js';
 
 describe('Test Conway Game of Life for cell with less than two alive neighbours', () => {
     const allDead = [

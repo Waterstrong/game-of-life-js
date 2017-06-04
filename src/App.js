@@ -4,7 +4,7 @@ import MyAppBar from './AppBar';
 import GameBoard from './GameBoard';
 import ControllPanel from './ControllPanel';
 import Footer from './Footer';
-import nextGeneration from './js/conway';
+import nextGeneration from './core/conway';
 
 class App extends React.Component {
 	constructor(props) {
