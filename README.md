@@ -21,3 +21,7 @@ The UI part is provided by [Kai Hu](https://github.com/WrongKey).
 ![](img/screenshot-square.png)
 ![](img/screenshot-circle.png)
 
+Here is the short GIF demo:
+
+![](img/conway_game.gif)
+
